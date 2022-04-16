@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin_login',views.admin_login,name='admin_login'),
     path('adminlogin',views.adminlogin,name='adminlogin'),
     path('admin_login_verified/<str:member>',views.admin_login_verified,name='admin_login_verified'),
+    path('blog_page/',views.blog_page,name='blog_page'),
+    path('contact_us',views.contact_us,name='contact_us'),
 
 ]
 urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

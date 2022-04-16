@@ -32,18 +32,10 @@
         <form action="adminlogin" method="POST" enctype="application/x-www-form-urlencoded">
             {%csrf_token%}
             <div class="user-box">
-                <input name="input_usernamebox" id="input_usernamebox" type="text" name="idd" required="">
-                <label>Username</label>
-                <img src="{%static 'images/User Male.svg'%}" id="login_userlogo" alt="user" width="45" height="45" />
+                <input name="input_usernamebox" id="input_usernamebox" type="number" required="">
+                <label>Enter Otp</label>
+                <img src="{%static 'images/Lock.svg'%}" id="login_userlogo" alt="user" width="35" height="35" />
             </div>
-            <div class="user-box">
-                <input name="input_passwordbox" id="input_passwordbox" type="password" name="idd" required="">
-                <label>Password</label>
-                <img src="{%static 'images/Lock.svg'%}" id="login_passwordlogo" alt="user" width="35" height="35" />
-                <img onclick="password_show()" src="{%static 'images/Eye.svg'%}" id="login_passwordeye" alt="user" width="27" height="27" />
-                <img onclick="password_show()" src="{%static 'images/Closed Eye.svg'%}" id="login_passwordeye_slash" alt="user" width="27" height="27" />
-            </div>
-            <div id="forgot_password"><p>Forgot password?</p></div>
             <div id="logindiv">
                 <input type="submit" id="login" value="Login">
             </div>
