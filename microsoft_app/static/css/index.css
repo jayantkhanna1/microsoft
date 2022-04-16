@@ -1,0 +1,279 @@
+*{
+    margin: 0;
+    padding: 0%;
+    font-family: 'Roboto';
+}
+html{
+    scroll-behavior: smooth;
+}
+#top_headings{
+    margin: 30px 50px;
+}
+#top_headings h2{
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+#top_headings p{
+    font-weight: 600;
+}
+#header{
+    background-color: rgb(201, 201, 201);
+    display: flex;
+    justify-content:right;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+#header a{
+   margin-right: 20px;
+   padding-right: 20px;
+   border-right: 1px solid grey;
+   text-decoration: none;
+   color: black;
+   cursor: pointer;
+}
+#speech_image{
+    height:600px;
+    width: 600px;
+}
+#header_images{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#certification_dashboard{
+    background-color: #00204f;
+    padding-bottom: 50px;
+}
+#certification_dashboard_inner{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.badge_dashboard{
+    height: 100px;
+    width: 100px;
+}
+#header_inside_image{
+    height: 610px;
+    flex-direction: column;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#header_inside_image img{
+    height: 150px;
+    width: 150px;
+}
+#certification_dashboard_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 35px;
+    margin-bottom: 75px;
+}
+#certification_dashboard_heading h2{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    word-spacing: 6px;
+}
+#certification_dashboard_inner div{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 50px 20px 50px;
+    border-radius: 18px;
+    flex-direction: column;
+}
+.a_dashboard{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2775d0;
+    margin-top: 35px;
+    padding: 10px 20px;
+
+}
+
+/* Trainigns css */
+#trainings{
+    margin-top: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#trainings_heading h2{
+    color: #53667d;
+    font-size: 35px;
+    margin-bottom: 65px;
+}
+#trainings_inner{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.training_image{
+    height: 100px;
+    width: 100px;
+}
+#trainings_inner div{
+    display: flex;
+    justify-content: left;
+    width: 40%;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 18px;
+    border: 2px solid #00204f;
+}
+.training_text{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 12px !important;
+    margin-bottom: 0px !important;
+    border:none !important;
+    padding: 0 !important;
+}
+
+/* Road map styling */
+
+#roadmap{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #00204f;
+    padding: 40px 60px;
+}
+#roadmap div>img{
+    
+    background-color: white;
+    padding: 2px 32px;
+    border-radius: 18px;
+    height: 60px;
+    width: 170px;
+}
+#roadmap div{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+#roadmap h2{
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+/* Testimonials styling */
+#testimonials{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}  
+#testimonials h2{
+    color: #2775d0;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+#testimonials_image{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 80%;
+    align-items: center;
+}
+#testimonials_image img{
+    margin-bottom: 30px;
+    width: 550px;
+}
+
+/* Footer styling */
+#footer{
+    border-top: 1px solid rgb(199, 199, 199);
+    background-color: #00204f;
+    height: 200px;
+    position: relative;
+}
+#feedback_toggle{
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 100px;
+}
+.feedback{
+    margin-right: 45px;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feedback img{
+    height: 100px;
+    width: 100px !important;
+}
+@media screen and (max-width: 800px){
+    #header_images{
+        flex-direction: column;
+    }
+    #header{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .header_a{
+        margin-bottom: 12px;
+        border-right: none !important;
+    }
+    #speech_image{
+        height: 490px;
+        width: 400px;
+        margin-bottom: 30px;
+    }
+    #certification_dashboard_inner{
+        flex-direction: column;
+    }
+    #certification_dashboard_inner div{
+        margin-bottom: 25px;
+        width: 300px;
+    }
+    #trainings_inner div{
+        width: 285px !important;
+        flex-wrap: nowrap;
+    }
+    #roadmap div{
+        flex-direction: column;
+    }
+    #roadmap div>img{
+        margin-bottom: 15px;
+    }
+    #testimonials h2{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .feedback{
+        border: 1px solid #00204f;
+    }
+}

@@ -1,0 +1,127 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Microsoft</title>
+
+    <!-- Local style sheets -->
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="top_headings">
+      <h2>Punit Kukreja</h2>
+      <p>Microsoft Certified Trainer | M365 Consultant | Azure Architect</p>
+    </div>
+    <div id="header">
+        <a class="header_a" href="">Home</a>
+        <a class="header_a" href="#trainings">Trainings We Offer</a>
+        <a class="header_a" href="#roadmap">Certification Paths</a>
+        <a class="header_a" href="admin_login">Blog</a>
+        <a class="header_a" href="">Contact Us</a>
+    </div>
+    <div id="header_images">
+        <img src="{%static 'images/header_image.jpeg' %}" id="speech_image" alt="error">
+       <div id="header_inside_image">
+           <img src="{%static 'images/1.png'%}" alt="">
+           <img src="{%static 'images/2.png'%}" alt="">
+           <img src="{%static 'images/3.png'%}" alt="">
+       </div>
+    </div>
+    <div id="certification_dashboard">
+        <div id="certification_dashboard_heading"><h2>Certification Dashboard</h2></div>
+        <div id="certification_dashboard_inner">
+            <div>
+                <img class="badge_dashboard" src="{%static 'images/Certificates.svg'%}" alt="">
+                <a class="a_dashboard" href="">View Certificates</a>
+            </div>
+            <div>
+                <img class="badge_dashboard" src="{%static 'images/Transcript.svg'%}" alt="">
+                <a class="a_dashboard" href="">View Transcript</a>
+            </div>
+            <div>
+                <img class="badge_dashboard" src="{%static 'images/badges.svg'%}" alt="">
+                <a class="a_dashboard" href="">View Badges</a>
+            </div>
+        </div>
+    </div>
+    <div id="trainings">
+        <div id="trainings_heading"><h2>Trainings We Offer</h2></div>
+        <div id="trainings_inner">
+            <div>
+                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
+                <div class="training_text">
+                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>  
+                </div>
+            </div>
+            <div>
+                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
+                <div class="training_text">
+                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>
+                </div>
+            </div>
+            <div>
+                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
+                <div class="training_text">
+                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>
+                </div>
+            </div>
+            <div>
+                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
+                <div class="training_text">
+                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>
+                </div>
+            </div>
+            <div>
+                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
+                <div class="training_text">
+                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>     
+                </div>
+            </div>
+            <div>
+                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
+                <div class="training_text">
+                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>     
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="roadmap">
+        <h2>Not sure which course to choose?</h2><br>
+        <h2>Try viewing our Roadmap and Certification Path</h2>
+        <div>
+            <img src="{%static 'images/Microsoft-Azure.png'%}" alt="">
+            <img src="{%static 'images/Microsoft-Office.png'%}" alt="">
+            <img src="{%static 'images/Power-Shell.png'%}" alt="">
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div id="testimonials">
+        <h2>When your Customer goes an extra mile</h2>
+        <div id="testimonials_image">
+            {%for x in feedback%}
+            <div class="feedback">
+                <img src="{%static 'images/vector-users-icon.webp'%}" alt="">
+                <div>
+                    <p>{{x.feedback}}</p><br>
+                    <p>{{x.name}}, {{x.location}}</p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
