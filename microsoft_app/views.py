@@ -77,3 +77,8 @@ def get_training_send_mail(request,training):
     send_mail(subject,final_message,'microsoft.azure.anmol@gmail.com',[email],fail_silently=False)
     messages.info(request,'message sent!')
     return redirect('index') 
+
+def certificates(request):
+    return render(request,'certificates.html')
+def transcripts(request):
+    return render(request,'transcripts.html')

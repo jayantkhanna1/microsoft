@@ -1,0 +1,58 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <<!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Certificates</title>
+
+    <!-- Local style sheets -->
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
+    <style>
+        #certificates{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #certificates img{
+            margin-bottom: 35px;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: transform 0.8s
+        }
+        #certificates img:hover{
+            transform: scale(1.02);
+            box-shadow: 2px 2px 20px 2px black;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="top_headings">
+        <h2>Punit Kukreja</h2>
+        <p>Microsoft Certified Trainer | M365 Consultant | Azure Architect</p>
+      </div>
+      <div id="header">
+          <a class="header_a" href="index">Home</a>
+          <a class="header_a" href="#trainings">Trainings We Offer</a>
+          <a class="header_a" href="#roadmap">Certification Paths</a>
+          <a class="header_a" href="blog">Blog</a>
+          <a class="header_a" href="contact_us">Contact Us</a>
+      </div>
+      <div id="certificates">
+        <img src="{%static 'transcripts/0.jpg' %}" style="width: 80%;height: 800px;border: none;">
+        <img src="{%static 'transcripts/1.jpg' %}" style="width: 80%;height: 800px;border: none;">
+      </div>
+</body>
+</html>
