@@ -1,6 +1,4 @@
-body {
-    padding-top: 85px;
-}
+
 *{
     font-family: 'Roboto', sans-serif;
 
@@ -28,7 +26,7 @@ h4 {
 
 /* ///// inputs /////*/
 
-input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label,#alwaysup {
     font-size: 0.75em;
     color: #999;
     top: -5px;

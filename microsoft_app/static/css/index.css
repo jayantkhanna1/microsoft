@@ -105,6 +105,7 @@ html{
 
 /* Trainigns css */
 #trainings{
+    
     margin-top: 65px;
     display: flex;
     justify-content: center;
@@ -122,16 +123,31 @@ html{
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    overflow-x: hidden;
+    height: 550px;
+    overflow-y: scroll;
     margin-bottom: 50px;
+}
+#trainings_inner::-webkit-scrollbar {
+    width: 8px;
+}
+#trainings_inner::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+#trainings_inner::-webkit-scrollbar-thumb {
+    background: #2775d0; 
+    border-radius: 20px;
 }
 .training_image{
     height: 100px;
     width: 100px;
 }
-#trainings_inner div{
+#trainings_inner a{
     display: flex;
     justify-content: left;
     width: 40%;
+    text-decoration: none;
+    color: black;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 40px;
@@ -259,7 +275,7 @@ html{
         margin-bottom: 25px;
         width: 300px;
     }
-    #trainings_inner div{
+    #trainings_inner a{
         width: 285px !important;
         flex-wrap: nowrap;
     }

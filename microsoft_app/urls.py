@@ -23,12 +23,17 @@ urlpatterns = [
     #index page
     path('',views.index,name='index'),
     path('index',views.index,name='index'),
+    path('get_training/<str:training>/index',views.index_from_getintouch,name='index'),
+    path('get_training/<str:training>/blog',views.blog_from_getintouch,name='blog'),
+    path('get_training/<str:training>/contact_us',views.contact_from_getintouch,name='contact'),
     path('admin_login',views.admin_login,name='admin_login'),
     path('adminlogin',views.adminlogin,name='adminlogin'),
+    path('blog',views.blog_page,name='blog'),
     path('admin_login_verified/<str:member>',views.admin_login_verified,name='admin_login_verified'),
-    path('blog_page/',views.blog_page,name='blog_page'),
+    path('get_training/<str:training>/',views.get_training,name='get_training'),
     path('contact_us',views.contact_us,name='contact_us'),
     path('contact_send_mail',views.contact_send_mail,name='contact_send_mail'),
+    path('get_training/<str:training>/get_training_send_mail',views.get_training_send_mail,name='get_training_send_mail'),
 
 ]
 urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

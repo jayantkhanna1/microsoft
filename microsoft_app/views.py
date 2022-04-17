@@ -1,14 +1,22 @@
 from django.shortcuts import render, redirect
-from .models import Feedback, Admin
+from .models import Feedback, Admin, Training
 import random
 import string
 from django.contrib import messages
 from django.core.mail import send_mail
 
-# Create your views here.
+
 def index(request):
-    feedback=Feedback.objects.all()
-    return render(request,'index.html',{'feedback':feedback})
+    return render(request,'index.html',{'feedback':Feedback.objects.all(),'trainings':Training.objects.all()})
+
+def index_from_getintouch(request,training):
+    return redirect('index')
+
+def blog_from_getintouch(request,training):
+    return redirect('blog')
+
+def contact_from_getintouch(request,training):
+    return redirect('contact_us')
 
 def admin_login(request):
     otp=''.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
@@ -48,8 +56,24 @@ def contact_send_mail(request):
     subject='User Feedback'
     message=request.POST['message']
     phone=request.POST['phone']
-    final_message=name+"\n"+user_email+"\n"+phone+"\n"+message
+    final_message="Name: "+name+"\n Email: "+user_email+"\n Mobile number: "+phone+"\n message: "+message
     email="microsoft.azure.anmol@gmail.com"
     send_mail(subject,final_message,'microsoft.azure.anmol@gmail.com',[email],fail_silently=False)
     messages.info(request,'message sent!')
     return redirect('contact_us')
+
+def get_training(request,training):
+    return render(request,'get_training.html',{'training':training})
+    
+def get_training_send_mail(request,training):
+    print("cool hai")
+    name=request.POST['name']
+    user_email=request.POST['email']
+    subject="Would like to purchase "+training+" training"
+    message=request.POST['message']
+    phone=request.POST['phone']
+    final_message="Name: "+name+"\n Email: "+user_email+"\n Mobile number: "+phone+"\n message: "+message +"\n Training: "+training
+    email="microsoft.azure.anmol@gmail.com"
+    send_mail(subject,final_message,'microsoft.azure.anmol@gmail.com',[email],fail_silently=False)
+    messages.info(request,'message sent!')
+    return redirect('index') 

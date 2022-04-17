@@ -17,6 +17,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
+    <!-- For jquery and ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+
 </head>
 <body>
     <div id="top_headings">
@@ -27,7 +31,7 @@
         <a class="header_a" href="">Home</a>
         <a class="header_a" href="#trainings">Trainings We Offer</a>
         <a class="header_a" href="#roadmap">Certification Paths</a>
-        <a class="header_a" href="blog_page">Blog</a>
+        <a class="header_a" href="blog">Blog</a>
         <a class="header_a" href="contact_us">Contact Us</a>
     </div>
     <div id="header_images">
@@ -58,42 +62,14 @@
     <div id="trainings">
         <div id="trainings_heading"><h2>Trainings We Offer</h2></div>
         <div id="trainings_inner">
-            <div>
+            {% for x in trainings %}
+            <a style="cursor:pointer;" href="get_training/{{x.training}}/">
                 <img class="training_image" src="{%static 'images/training.png'%}" alt="">
                 <div class="training_text">
-                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>  
+                    <h3>{{x.training}}</h3>  
                 </div>
-            </div>
-            <div>
-                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
-                <div class="training_text">
-                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>
-                </div>
-            </div>
-            <div>
-                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
-                <div class="training_text">
-                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>
-                </div>
-            </div>
-            <div>
-                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
-                <div class="training_text">
-                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>
-                </div>
-            </div>
-            <div>
-                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
-                <div class="training_text">
-                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>     
-                </div>
-            </div>
-            <div>
-                <img class="training_image" src="{%static 'images/training.png'%}" alt="">
-                <div class="training_text">
-                    <h3>Exam AZ-900: Microsoft Azure Fundamentals</h3>     
-                </div>
-            </div>
+            </a>
+            {%endfor%}
         </div>
     </div>
 
@@ -123,5 +99,24 @@
         </div>
     </div>
     <div id="footer"></div>
+    <!-- <script>
+        function get_training(id){
+            $.ajax({
+                type:'POST',
+                url:'get_training',
+                data:{
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    'training':id,
+                },
+                success: function(data){
+                    window.location.reload();
+                },
+                error: function(data){
+                    alert("Some error occured please contact System developer");
+                }
+
+              });
+        }
+    </script> -->
 </body>
 </html>
