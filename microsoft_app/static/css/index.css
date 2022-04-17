@@ -292,5 +292,7 @@ html{
     .feedback{
         border: 1px solid #00204f;
     }
-    
+    #testimonials_image img{
+        width: 100%;
+    }
 }

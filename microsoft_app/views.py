@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
-from .models import Feedback, Admin, Training
+from .models import Admin, Training
 import random
 import string
+import json
 from django.contrib import messages
 from django.core.mail import send_mail
 
 
 def index(request):
-    return render(request,'index.html',{'feedback':Feedback.objects.all(),'trainings':Training.objects.all()})
+    rand=[]
+    for x in range(6):
+        rand.append(random.randint(0, 11))
+    return render(request,'index.html',{'feedback':json.loads(json.dumps(rand)),'trainings':Training.objects.all()})
 
 def index_from_getintouch(request,training):
     return redirect('index')

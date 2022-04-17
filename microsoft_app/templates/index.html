@@ -108,28 +108,33 @@
     <!-- Testimonials -->
     <div id="testimonials">
         <h2>When your Customer goes an extra mile</h2>
-        <div id="testimonials_image">
+        <div id="testimonials_image"> 
             {%for x in feedback%}
-            <div class="feedback">
-                <img src="{%static 'images/vector-users-icon.webp'%}" alt="">
-                <div>
-                    <p>{{x.feedback}}</p><br>
-                    <p>{{x.name}}, {{x.location}}</p>
-                </div>
-            </div>
+            <img id="img0" src="../static/feedback/{{x}}.png" alt="">
             {%endfor%}
         </div>
     </div>
     <div id="footer"></div>
     <script>
         $(document).ready(function(){
-        $("#searchbar").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#trainings_inner a").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            $("#searchbar").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#trainings_inner a").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
             });
         });
-        });
     </script>
+    <!-- <script>
+        var i=0;
+        {%for x in feedback%}
+            var img = document.getElementById("img"+(i));
+            path = "%static 'feedback/{{x}}.png'";
+            path=path+"%";
+            console.log(path);
+            img.src="\{"+path+"\}";
+            i++;
+        {%endfor%}
+    </script> -->
 </body>
 </html>
