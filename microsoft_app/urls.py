@@ -22,11 +22,13 @@ urlpatterns = [
     
     #index page
     path('',views.index,name='index'),
+    path('index',views.index,name='index'),
     path('admin_login',views.admin_login,name='admin_login'),
     path('adminlogin',views.adminlogin,name='adminlogin'),
     path('admin_login_verified/<str:member>',views.admin_login_verified,name='admin_login_verified'),
     path('blog_page/',views.blog_page,name='blog_page'),
     path('contact_us',views.contact_us,name='contact_us'),
+    path('contact_send_mail',views.contact_send_mail,name='contact_send_mail'),
 
 ]
 urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

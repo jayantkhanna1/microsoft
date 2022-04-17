@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Feedback, Admin
 import random
 import string
+from django.contrib import messages
 from django.core.mail import send_mail
 
 # Create your views here.
@@ -40,3 +41,15 @@ def blog_page(request):
 
 def contact_us(request):
     return render(request,'contact.html')
+
+def contact_send_mail(request):
+    name=request.POST['name']
+    user_email=request.POST['email']
+    subject='User Feedback'
+    message=request.POST['message']
+    phone=request.POST['phone']
+    final_message=name+"\n"+user_email+"\n"+phone+"\n"+message
+    email="microsoft.azure.anmol@gmail.com"
+    send_mail(subject,final_message,'microsoft.azure.anmol@gmail.com',[email],fail_silently=False)
+    messages.info(request,'message sent!')
+    return redirect('contact_us')
