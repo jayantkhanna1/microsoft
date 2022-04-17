@@ -12,12 +12,33 @@
 
     <!-- Local style sheets -->
     <link rel="stylesheet" href="{%static 'css/index.css'%}">
+    <link rel="stylesheet" href="{%static 'css/adminlogin.css'%}">
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet"> 
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .user-box{
+            width: 500px;
+        }
+        body{
+            overflow: scroll;    
+        }
+        @media screen and (max-width: 800px){
+            .user-box{
+                width: 80%;
+            }
+            .user-box label{
+                top: -15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="top_headings">
@@ -52,12 +73,16 @@
             </div>
             <div>
                 <img class="badge_dashboard" src="{%static 'images/badges.svg'%}" alt="">
-                <a class="a_dashboard" href="">View Badges</a>
+                <a class="a_dashboard" href="badges">View Badges</a>
             </div>
         </div>
     </div>
     <div id="trainings">
         <div id="trainings_heading"><h2>Trainings We Offer</h2></div>
+        <div class="user-box">
+            <input name="input_usernamebox" id="searchbar" type="text" required="">
+            <label>Enter Name of course you want to search</label>
+        </div>
         <div id="trainings_inner">
             {% for x in trainings %}
             <a style="cursor:pointer;" href="get_training/{{x.training}}/">
@@ -96,5 +121,15 @@
         </div>
     </div>
     <div id="footer"></div>
+    <script>
+        $(document).ready(function(){
+        $("#searchbar").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#trainings_inner a").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });
+    </script>
 </body>
 </html>

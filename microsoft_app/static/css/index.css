@@ -257,7 +257,7 @@ html{
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        
+        width: 100%;
     }
     .header_a{
         margin-bottom: 12px;
@@ -292,4 +292,5 @@ html{
     .feedback{
         border: 1px solid #00204f;
     }
+    
 }

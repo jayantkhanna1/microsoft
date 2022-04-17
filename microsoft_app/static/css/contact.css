@@ -134,3 +134,27 @@ input[type=checkbox]:checked + label {
   color: #f00;
   font-style: normal;
 }
+#sendbutton{
+    outline: none;
+    border: none;
+}
+#sendbutton_div{
+    display: inline-flex;
+    justify-content: center;
+    width: 110%;
+    align-items: center;
+}
+@media screen and (max-width: 800px){
+    .for_mobile{
+        width: 300px;
+    }
+    #sendbutton_div{
+        width: 80%;
+    }
+    #mobile_form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

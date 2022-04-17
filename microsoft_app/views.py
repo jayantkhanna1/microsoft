@@ -80,5 +80,9 @@ def get_training_send_mail(request,training):
 
 def certificates(request):
     return render(request,'certificates.html')
+
 def transcripts(request):
     return render(request,'transcripts.html')
+
+def badges(request):
+    return render(request,'badges.html')

@@ -50,33 +50,33 @@
         <form action="get_training_send_mail" method="POST" enctype="multipart/form-data">
         {%csrf_token%}
         <div class="row input-container">
-                <div class="col-xs-12">
+                <div class=" for_mobile col-xs-12">
                     <div class="styled-input wide">
                         <input type="text" name="name" id="name" required />
                         <label>Name</label> 
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 for_mobile col-sm-12">
                     <div class="styled-input">
                         <input type="email" name="email" id="email" required />
                         <label>Email</label> 
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 for_mobile col-sm-12">
                     <div class="styled-input" style="float:right;">
                         <input type="number" name="phone" id="phone" required />
                         <label>Phone Number</label> 
                     </div>
                 </div>
                 
-                <div class="col-xs-12">
+                <div class="for_mobile col-xs-12">
                     <div class="styled-input wide">
                         <textarea name="message" id="message" required></textarea>
                         <label>Message, Course you have selected will be sent automatically no need to type that here</label>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    <input type="submit" class="btn-lrg submit-btn" value="Send Message">
+                <div class="col-xs-12" id="sendbutton_div">
+                    <input type="submit" id="sendbutton" class="btn-lrg submit-btn" value="Send Message">
                 </div>
         </div>
     </form>

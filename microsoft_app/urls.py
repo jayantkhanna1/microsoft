@@ -36,6 +36,7 @@ urlpatterns = [
     path('get_training/<str:training>/get_training_send_mail',views.get_training_send_mail,name='get_training_send_mail'),
     path('certificates',views.certificates,name='certificates'),
     path('transcripts',views.transcripts,name='transcripts'),
+    path('badges',views.badges,name='badges'),
 
 ]
 urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

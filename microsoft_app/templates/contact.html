@@ -47,35 +47,35 @@
         <div class="row">
                 <h4 style="text-align:center">We'd love to hear from you!</h4>
         </div>
-        <form action="contact_send_mail" method="POST" enctype="multipart/form-data">
+        <form action="contact_send_mail" method="POST" enctype="multipart/form-data" id="mobile_form">
         {%csrf_token%}
         <div class="row input-container">
-                <div class="col-xs-12">
+                <div class="for_mobile col-xs-12" class="for_mobile">
                     <div class="styled-input wide">
                         <input type="text" name="name" id="name" required />
                         <label>Name</label> 
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 for_mobile col-sm-12" class="for_mobile">
                     <div class="styled-input">
                         <input type="email" name="email" id="email" required />
                         <label>Email</label> 
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 col-sm-12 for_mobile" class="for_mobile">
                     <div class="styled-input" style="float:right;">
                         <input type="number" name="phone" id="phone" required />
                         <label>Phone Number</label> 
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 for_mobile" class="for_mobile">
                     <div class="styled-input wide">
                         <textarea name="message" id="message" required></textarea>
                         <label>Message</label>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    <input type="submit" class="btn-lrg submit-btn" value="Send Message">
+                <div class="col-xs-12" id="sendbutton_div">
+                    <input type="submit" class="btn-lrg submit-btn" id="sendbutton" value="Send Message">
                 </div>
         </div>
     </form>
