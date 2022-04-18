@@ -19,6 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <div id="top_headings">
@@ -32,6 +36,108 @@
           <a class="header_a" href="blog">Blog</a>
           <a class="header_a" href="contact_us">Contact Us</a>
       </div>
-      
+      <div id="addblog">
+        <div id="inner_blog">
+            <div id="chapters">
+                <div id="chapters_inner">
+                    <div id="chapter_inner_heading">
+                        <h2>Chapters</h2>
+                    </div>
+                    <div id="chapter_content">
+                        {%for x in chapter%}
+                        <p class="chapters" id="chapter_{{x.chapter}}" onclick="changeactivechapter('chapter_{{x.chapter}}')" style="cursor: pointer;" >{{x.chapter}}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            <div id="pages">
+                <div id="pages_inner">
+                    <div id="pages_inner_heading">
+                        <h2>Pages</h2>
+                    </div>
+                    <div id="page_content">
+                        {%for x in blogs%}
+                        <p class="pages page_{{x.chapter}}" onclick="settextbar('{{x.page_number}}')" style="cursor: pointer;">{{x.page_number}}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            <div id="textinput">
+                {%for x in blogs%}
+                 <textarea class="blog" name="blog" id="blog_{{x.page_number}}">{{x.blog}}</textarea>
+                {%endfor%}
+                 
+            </div>
+        </div>
+    </div>
+     <!-- This script sets initial active chapter when page reloads -->
+     <script>
+        chapters=document.getElementById('chapter_1');
+        chapters.classList.add("active");
+    </script>
+
+    <!-- This script changes active chapters -->
+    <script>
+        function changeactivechapter(id){
+            chapters=document.getElementsByClassName('chapters')
+            for(var i=0;i<chapters.length;i++){
+                chapters[i].classList.remove('active')
+            }
+            active_chapter=document.getElementById(id);
+            active_chapter.classList.add('active')
+
+            //changing pages again
+            activechapter=document.getElementsByClassName('active');
+            allpages=document.getElementsByClassName('pages')
+            for(var i=0;i<allpages.length;i++){
+                allpages[i].style.display="none";
+                allpages[i].classList.remove('active_pages')
+            }
+            activepages=document.getElementsByClassName('page_'+activechapter[0].innerHTML);
+            for(var i=0;i<activepages.length;i++){
+                activepages[i].style.display="block";
+                activepages[i].classList.add('active_pages')
+            }
+        }
+    </script>
+
+    
+    <!-- This hides pages of inactive chapter -->
+    <script>
+        activechapter=document.getElementsByClassName('active');
+        allpages=document.getElementsByClassName('pages')
+        for(var i=0;i<allpages.length;i++){
+            allpages[i].style.display="none";
+            allpages[i].classList.remove('active_pages')
+        }
+        activepages=document.getElementsByClassName('page_'+activechapter[0].innerHTML);
+        for(var i=0;i<activepages.length;i++){
+            activepages[i].style.display="block";
+            activepages[i].classList.add('active_pages')
+        }
+    </script>
+
+    <!-- This function sets default textbar -->
+    <script>
+        blogs=document.getElementsByClassName('blog');
+        for(var i =0;i < blogs.length;i++){
+            blogs[i].style.display="none";
+        }
+        document.getElementById('blog_1.0').style.display="block";
+        document.getElementById('saveblog').dataset.page_number="1.0"
+    </script>
+
+    <!-- This function sets textbar for specific page -->
+    <script>
+        function settextbar(id){
+            blogs=document.getElementsByClassName('blog');
+            for(var i =0;i < blogs.length;i++){
+                blogs[i].style.display="none";
+            }
+            document.getElementById('blog_'+id).style.display="block";
+            document.getElementById('saveblog').dataset.page_number=id;
+        }
+    </script>
+
 </body>
 </html>

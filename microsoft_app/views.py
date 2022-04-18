@@ -49,7 +49,7 @@ def admin_login_verified(request,member):
         return render(request,'admin.html',{'admin':member1,'trainings':Training.objects.all(),'blogs':Blogs.objects.all(),'chapter':Chapter.objects.all()})
 
 def blog_page(request):
-    return render(request,'blog.html')
+    return render(request,'blog.html',{'blogs':Blogs.objects.all(),'chapter':Chapter.objects.all()})
 
 def contact_us(request):
     return render(request,'contact.html')
