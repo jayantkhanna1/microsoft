@@ -1,6 +1,9 @@
 #trainings_heading{
     position: relative;
 }
+body{
+    overflow-x: hidden;
+}
 #addtraining{
     position: absolute;
     top: -10px;
@@ -147,7 +150,7 @@
 #inner_blog{
     display: flex;
 }
-#chapters,#pages{
+#chapters,#pages,#textinput{
     position: fixed;
     overflow: hidden;
     height: 100%;
@@ -167,7 +170,8 @@
     display: flex;
     justify-content: space-around;
 }
-#chapter_inner_heading button,#pages_inner_heading button{
+#chapter_inner_heading a,#pages_inner_heading a,#saveblog
+{
     padding: 10px;
     font-family: 'Roboto';
     background-color: #2775d0;
@@ -176,6 +180,47 @@
     color: white;
     font-size: 15px;
     font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
     border-radius: 18px;
+}
+#page_content p,#chapter_content p{
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+#textinput{
+    left: 520px;
+    background-color: transparent;
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+    
+}
+#textinput textarea{
+    resize: none;
+    height:80%;
+    width: 60%;
+    border: 2px solid black;
+    font-size: 25px;
+    padding:20px;
+    font-family: 'Roboto';
+}
+#saveblog{
+    position: fixed;
+    overflow: hidden;
+    background-color: #2775d0;
+    margin-top: 20px;
+    bottom: 30px;
+    right: 40px;
+    font-family: 'Roboto';
+    background-color: #2775d0;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 18px;
+    padding: 15px 20px;
 }

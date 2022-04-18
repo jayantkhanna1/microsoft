@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Admin, Training
+from .models import Admin, Training, Blogs, Chapter
 import random
 import string
 import json
@@ -46,7 +46,7 @@ def adminlogin(request):
 def admin_login_verified(request,member):
     member1=Admin.objects.get(private_key=member)
     if member1.private_key==request.session['private_subha_key']:
-        return render(request,'admin.html',{'admin':member1,'trainings':Training.objects.all()})
+        return render(request,'admin.html',{'admin':member1,'trainings':Training.objects.all(),'blogs':Blogs.objects.all(),'chapter':Chapter.objects.all()})
 
 def blog_page(request):
     return render(request,'blog.html')
@@ -102,4 +102,30 @@ def delete_training(request):
     return redirect('admin_login_force')
 
 def admin_login_force(request):
-    return render (request,'admin.html',{'admin':Admin.objects.all(),'trainings':Training.objects.all()})
+    return render (request,'admin.html',{'admin':Admin.objects.all(),'trainings':Training.objects.all(),'blogs':Blogs.objects.all(),'chapter':Chapter.objects.all()})
+
+def addnewchapter(request):
+    blogs=Blogs.objects.all()
+    highest=0
+    for x in blogs:
+        highest=x.chapter
+    highest=str(int(highest)+1)
+    Chapter.objects.create(chapter=highest)
+    Blogs.objects.create(chapter=highest,page_number=str(highest)+".0",blog="")
+    return redirect('admin_login_force')
+
+def addnewpage(request):
+    lastpage=request.POST['last_chapter']
+    chapter=lastpage.split('.')
+    pagenum=float(float(lastpage)+0.1)
+    pagenum=str(round(pagenum, 2))
+    blogs=Blogs.objects.create(chapter=chapter[0],page_number=pagenum,blog="")
+    return redirect('admin_login_force')
+
+def saveblog(request):
+    pagenum=request.POST['pagenumber']
+    blog=request.POST['blog']
+    blog_obj=Blogs.objects.get(page_number=pagenum)
+    blog_obj.blog=blog
+    blog_obj.save()
+    return redirect('admin_login_force')

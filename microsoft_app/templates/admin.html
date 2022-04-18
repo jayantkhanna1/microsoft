@@ -80,21 +80,35 @@
                 <div id="chapters_inner">
                     <div id="chapter_inner_heading">
                         <h2>Chapters</h2>
-                        <button>Add new</button>
+                        <a href="addnewchapter">Add new</a>
                     </div>
-                    <div id="chapter_content"></div>
+                    <div id="chapter_content">
+                        {%for x in chapter%}
+                        <p class="chapters" id="chapter_{{x.chapter}}" onclick="changeactivechapter('chapter_{{x.chapter}}')" style="cursor: pointer;" >{{x.chapter}}</p>
+                        {%endfor%}
+                    </div>
                 </div>
             </div>
             <div id="pages">
                 <div id="pages_inner">
                     <div id="pages_inner_heading">
                         <h2>Pages</h2>
-                        <button>Add new</button>
+                        <a onclick="addnewpage()">Add new</a>
                     </div>
-                    <div id="page_content"></div>
+                    <div id="page_content">
+                        {%for x in blogs%}
+                        <p class="pages page_{{x.chapter}}" onclick="settextbar('{{x.page_number}}')" style="cursor: pointer;">{{x.page_number}}</p>
+                        {%endfor%}
+                    </div>
                 </div>
             </div>
-            <div id="textinput"></div>
+            <div id="textinput">
+                {%for x in blogs%}
+                 <textarea class="blog" name="blog" id="blog_{{x.page_number}}">{{x.blog}}</textarea>
+                {%endfor%}
+                 
+            </div>
+            <button data-page_number="" onclick="sendblogtobackend()" id="saveblog">Save Blog</button>
         </div>
     </div>
 
@@ -139,7 +153,7 @@
             </div>
     
             </div>
-
+    <!-- This is serchbar for training  -->
     <script>
         $(document).ready(function(){
             $("#searchbar").on("keyup", function() {
@@ -150,6 +164,8 @@
             });
         });
     </script>
+
+    <!-- This opens add training modal -->
         <script>
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
@@ -165,37 +181,29 @@
         document.getElementById("myModal").style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            document.getElementById("myModal").style.display = "none";
-        }
-        }
         </script>
 
-<script>
+    <!-- This opens delete training modal -->
+    <script>
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close2")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close2")[0];
 
-    // When the user clicks the button, open the modal 
-    function openmodal2(id) {
-        document.getElementById('training_name').value=id;
-        document.getElementById("myModal2").style.display = "block";
-    }
+        // When the user clicks the button, open the modal 
+        function openmodal2(id) {
+            document.getElementById('training_name').value=id;
+            document.getElementById("myModal2").style.display = "block";
+        }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        document.getElementById("myModal2").style.display = "none";
-    }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            document.getElementById("myModal2").style.display = "none";
+        }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        document.getElementById("myModal2").style.display = "none";
-    }
-    }
+        
     </script>
+
+    <!-- This toggles between blogs and training -->
     <script>
         function changeviewtoaddblog(){
             document.getElementById('trainings').style.display='none'
@@ -204,6 +212,113 @@
         function changeviewtotraining(){
             document.getElementById('trainings').style.display='flex'
             document.getElementById('addblog').style.display='none'
+        }
+    </script>
+
+    <!-- This sends ajax request to add new page -->
+    <script>
+        function addnewpage(){
+            pages=document.getElementsByClassName('active_pages');
+            l=pages.length
+            id=pages[l-1].innerHTML
+            $.ajax({
+               type: "POST",
+               url: 'addnewpage',   
+               data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+                    last_chapter: id},
+                success: function(data) {
+                  location.reload();
+                }
+              });
+        }
+    </script>
+
+    <!-- This script sets initial active chapter when page reloads -->
+    <script>
+        chapters=document.getElementById('chapter_1');
+        chapters.classList.add("active");
+    </script>
+
+    <!-- This script changes active chapters -->
+    <script>
+        function changeactivechapter(id){
+            chapters=document.getElementsByClassName('chapters')
+            for(var i=0;i<chapters.length;i++){
+                chapters[i].classList.remove('active')
+            }
+            active_chapter=document.getElementById(id);
+            active_chapter.classList.add('active')
+
+            //changing pages again
+            activechapter=document.getElementsByClassName('active');
+            allpages=document.getElementsByClassName('pages')
+            for(var i=0;i<allpages.length;i++){
+                allpages[i].style.display="none";
+                allpages[i].classList.remove('active_pages')
+            }
+            activepages=document.getElementsByClassName('page_'+activechapter[0].innerHTML);
+            for(var i=0;i<activepages.length;i++){
+                activepages[i].style.display="block";
+                activepages[i].classList.add('active_pages')
+            }
+        }
+    </script>
+
+    
+    <!-- This hides pages of inactive chapter -->
+    <script>
+        activechapter=document.getElementsByClassName('active');
+        allpages=document.getElementsByClassName('pages')
+        for(var i=0;i<allpages.length;i++){
+            allpages[i].style.display="none";
+            allpages[i].classList.remove('active_pages')
+        }
+        activepages=document.getElementsByClassName('page_'+activechapter[0].innerHTML);
+        for(var i=0;i<activepages.length;i++){
+            activepages[i].style.display="block";
+            activepages[i].classList.add('active_pages')
+        }
+    </script>
+
+    <!-- This function sets default textbar -->
+    <script>
+        blogs=document.getElementsByClassName('blog');
+        for(var i =0;i < blogs.length;i++){
+            blogs[i].style.display="none";
+        }
+        document.getElementById('blog_1.0').style.display="block";
+        document.getElementById('saveblog').dataset.page_number="1.0"
+    </script>
+
+    <!-- This function sets textbar for specific page -->
+    <script>
+        function settextbar(id){
+            blogs=document.getElementsByClassName('blog');
+            for(var i =0;i < blogs.length;i++){
+                blogs[i].style.display="none";
+            }
+            document.getElementById('blog_'+id).style.display="block";
+            document.getElementById('saveblog').dataset.page_number=id;
+        }
+    </script>
+
+    <!-- This function sends blog to backend -->
+    <script>
+        function sendblogtobackend(){
+            pagenumber=document.getElementById('saveblog').dataset.page_number;
+            blog=document.getElementById('blog_'+pagenumber).value
+            console.log(blog)
+            $.ajax({
+               type: "POST",
+               url: 'saveblog',   
+               data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+                    pagenumber: pagenumber,
+                    blog:blog
+                },
+                success: function(data) {
+                  location.reload();
+                }
+              });
         }
     </script>
 </body>
