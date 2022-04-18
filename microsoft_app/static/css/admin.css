@@ -138,3 +138,44 @@
 #Delete{
     background-color: red;
 }
+
+
+/* Add blog styling */
+#addblog{
+    display: none;
+}
+#inner_blog{
+    display: flex;
+}
+#chapters,#pages{
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: 250px;
+    background-color: aqua;
+}
+#pages{
+    left: 250px;
+    background-color: #888;
+}
+#chapters_inner,#pages_inner{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#chapter_inner_heading,#pages_inner_heading{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+#chapter_inner_heading button,#pages_inner_heading button{
+    padding: 10px;
+    font-family: 'Roboto';
+    background-color: #2775d0;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 18px;
+}
