@@ -46,7 +46,7 @@ def adminlogin(request):
 def admin_login_verified(request,member):
     member1=Admin.objects.get(private_key=member)
     if member1.private_key==request.session['private_subha_key']:
-        return render(request,'admin.html',{'member':member1})
+        return render(request,'admin.html',{'admin':member1,'trainings':Training.objects.all()})
 
 def blog_page(request):
     return render(request,'blog.html')
@@ -90,3 +90,16 @@ def transcripts(request):
 
 def badges(request):
     return render(request,'badges.html')
+
+def add_new_training(request):
+    newt=request.POST['newtraining']
+    Training.objects.create(training=newt)
+    return redirect('admin_login_force')
+
+def delete_training(request):
+    newt=request.POST['training_name']
+    Training.objects.get(training=newt).delete()
+    return redirect('admin_login_force')
+
+def admin_login_force(request):
+    return render (request,'admin.html',{'admin':Admin.objects.all(),'trainings':Training.objects.all()})
